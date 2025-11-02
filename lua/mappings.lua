@@ -63,7 +63,7 @@ map("n", "K", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })
 map("n", "gi", function() vim.lsp.buf.implementation() end, { desc = "LSP implementation" })
 map("n", "gr", function() vim.lsp.buf.references() end, { desc = "LSP references" })
 map("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "LSP signature help" })
-map("n", "<leader>lr", function() require("nvchad.renamer").open() end, { desc = "LSP rename" })
+map("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "LSP rename" })
 map("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "LSP code action" })
 map("n", "<leader>lf", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "Floating diagnostic" })
 
