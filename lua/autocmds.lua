@@ -6,7 +6,8 @@ autocmd(
   "BufWritePre",
   {
     callback = function()
-      vim.lsp.buf.format { async = true }
+      vim.lsp.buf.format { async = false }
+      vim.cmd("silent write")
     end,
   }
 )
