@@ -110,6 +110,7 @@ return {
       { "<leader>sd", function() Snacks.picker.diagnostics() end,     desc = "Diagnostics" },
       { "<leader>su", function() Snacks.picker.undo() end,            desc = "Undo history" },
       { "<leader>sm", function() Snacks.picker.marks() end,           desc = "Marks" },
+      { "<leader>sz", function() Snacks.zen() end,                    desc = "Zen/Focus buffer" },
     },
   },
 
