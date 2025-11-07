@@ -95,7 +95,13 @@ map("n", "<leader>oo", "<cmd> Outline <CR>", { desc = "File outline" })
 
 -- Hop
 map("x", "<leader><leader>w", "<cmd>HopWord<cr>", { noremap = true, silent = true })
-map("n", "<leader><leader>w", "<cmd>HopWord<cr>", { noremap = true, silent = true })
+map("n", "<leader><leader>w",
+  function() require('hop').hint_words({ direction = require('hop.hint').HintDirection.AFTER_CURSOR }) end,
+  { noremap = true, silent = true, desc = 'Hop Word' })
+map("n", "<leader><leader>b",
+  function() require('hop').hint_words({ direction = require('hop.hint').HintDirection.BEFORE_CURSOR }) end,
+  { noremap = true, silent = true, desc = 'Hop Before' })
+
 map("n", "<leader><leader>W", "<cmd>HopWordMW<cr>", { noremap = true, silent = true }) -- multiwindow
 
 map("n", "<leader><leader>e",
