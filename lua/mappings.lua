@@ -61,7 +61,7 @@ map("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP definition
 
 map("n", "K", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })
 map("n", "gi", function() vim.lsp.buf.implementation() end, { desc = "LSP implementation" })
-map("n", "gr", function() vim.lsp.buf.references() end, { desc = "LSP references" })
+map("n", "<leader>lu", function() vim.lsp.buf.references() end, { desc = "LSP references (usages)" })
 map("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "LSP signature help" })
 map("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "LSP rename" })
 map("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "LSP code action" })
