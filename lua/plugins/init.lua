@@ -220,4 +220,22 @@ return {
       }
     }
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      -- UI improvements
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+
+      -- Virtual text showing variable values
+      "theHamsta/nvim-dap-virtual-text",
+
+      -- Mason integration for easy adapter installation
+      "jay-babu/mason-nvim-dap.nvim",
+    },
+    config = function()
+      require "configs.dap".setup()
+    end,
+  },
 }
