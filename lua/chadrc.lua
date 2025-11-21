@@ -121,9 +121,11 @@ M.mason = {
     "prettier",
     "tailwindcss-language-server",
     "typescript-language-server",
+    "js-debug-adapter",
 
-    -- other
+    -- rust
     "rust-analyzer",
+    "codelldb",
 
     "editorconfig-checker",
   },

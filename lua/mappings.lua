@@ -61,7 +61,6 @@ map("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP definition
 
 map("n", "K", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })
 map("n", "gi", function() vim.lsp.buf.implementation() end, { desc = "LSP implementation" })
-map("n", "<leader>lu", function() vim.lsp.buf.references() end, { desc = "LSP references (usages)" })
 map("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "LSP signature help" })
 map("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "LSP rename" })
 map("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "LSP code action" })
@@ -144,6 +143,22 @@ map("", "T",
   "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>",
   { noremap = true, silent = true }
 )
+
+-- DAP (Debug Adapter Protocol)
+local dap = require("dap")
+local dapui = require("dapui")
+
+map("n", "<leader>dc", dap.continue, { desc = "Debug: Start/Continue" })
+map("n", "<leader>dC", dap.continue, { desc = "Debug: Disconnect" })
+map("n", "<leader>dsO", dap.step_over, { desc = "Debug: Step Over" })
+map("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into" })
+map("n", "<leader>dso", dap.step_out, { desc = "Debug: Step Out" })
+map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+map("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+  { desc = "Debug: Set Conditional Breakpoint" })
+map("n", "<leader>dr", dap.repl.open, { desc = "Debug: Open REPL" })
+map("n", "<leader>dl", dap.run_last, { desc = "Debug: Run Last" })
+map("n", "<leader>du", dapui.toggle, { desc = "Debug: Toggle UI" })
 
 --------------------------------------------------------------------
 ----------------------- Insert mode

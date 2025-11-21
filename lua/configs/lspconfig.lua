@@ -1,14 +1,16 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
-	"html",
-	"cssls",
-	"tsserver",
-	"clangd",
-	"tailwindcss",
-	"eslint",
-	"pyright",
-	"rust_analyzer"
+  "html",
+  "cssls",
+  "tsserver",
+  "clangd",
+  "tailwindcss",
+  "eslint",
+  "pyright",
+  "rust_analyzer",
+  "js-debug-adapter",
+  "codelldb"
 }
 
 vim.lsp.enable(servers)
