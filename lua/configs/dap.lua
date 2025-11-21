@@ -28,6 +28,10 @@ function M.setup()
     dapui.close()
   end
 
+  vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+
+  -------------------------------------
+
   -- Node.js/TypeScript configuration
   dap.adapters["pwa-node"] = {
     type = "server",
