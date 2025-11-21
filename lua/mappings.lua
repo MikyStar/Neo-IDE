@@ -159,6 +159,15 @@ map("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Breakpoint co
 map("n", "<leader>dr", dap.repl.open, { desc = "Debug: Open REPL" })
 map("n", "<leader>dl", dap.run_last, { desc = "Debug: Run Last" })
 map("n", "<leader>du", dapui.toggle, { desc = "Debug: Toggle UI" })
+map("n", "<leader>dh", function()
+  local word = vim.fn.expand("<cword>")
+  dapui.eval(word, {
+    context = "hover",
+    width = 70,
+    height = 15,
+    enter = true
+  })
+end, { desc = "Debug: Variable hover" })
 
 --------------------------------------------------------------------
 ----------------------- Insert mode
