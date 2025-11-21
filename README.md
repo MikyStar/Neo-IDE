@@ -153,3 +153,11 @@ _Here are only listed a few important ones, for more see lua/mappings.lua_
 <div align="center">
   <i>Snacks</i>
 </div>
+
+---
+
+![dap](./assets/dap.png)
+
+<div align="center">
+  <i>Debugger</i>
+</div>
