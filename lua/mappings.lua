@@ -150,15 +150,16 @@ local dapui = require("dapui")
 
 map("n", "<leader>dc", dap.continue, { desc = "Debug: Start/Continue" })
 map("n", "<leader>dC", dap.continue, { desc = "Debug: Disconnect" })
-map("n", "<leader>dsO", dap.step_over, { desc = "Debug: Step Over" })
-map("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into" })
-map("n", "<leader>dso", dap.step_out, { desc = "Debug: Step Out" })
+map("n", "<leader>dsO", dap.step_over, { desc = "Debug: Step Over", noremap = true })
+map("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into", noremap = true })
+map("n", "<leader>dso", dap.step_out, { desc = "Debug: Step Out", noremap = true })
 map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
 map("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
   { desc = "Debug: Set Conditional Breakpoint" })
 map("n", "<leader>dr", dap.repl.open, { desc = "Debug: Open REPL" })
 map("n", "<leader>dl", dap.run_last, { desc = "Debug: Run Last" })
 map("n", "<leader>du", dapui.toggle, { desc = "Debug: Toggle UI" })
+map("n", "<leader>di", function() require('dap.ui.widgets').hover() end, { desc = "Debug: Variable simple info" })
 map("n", "<leader>dh", function()
   local word = vim.fn.expand("<cword>")
   dapui.eval(word, {
@@ -167,7 +168,7 @@ map("n", "<leader>dh", function()
     height = 15,
     enter = true
   })
-end, { desc = "Debug: Variable hover" })
+end, { desc = "Debug: Extened variable hover" })
 
 --------------------------------------------------------------------
 ----------------------- Insert mode

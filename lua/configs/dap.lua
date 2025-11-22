@@ -82,10 +82,17 @@ function M.setup()
       type = "codelldb",
       request = "launch",
       program = function()
-        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        local program = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        local args_string = vim.fn.input("Arguments: ")
+
+        vim.g.dap_last_args = vim.split(args_string, " ")
+        return program
       end,
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
+      args = function()
+        return vim.g.dap_last_args or {}
+      end,
     },
     {
       name = "Attach to process",
