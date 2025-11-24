@@ -9,3 +9,4 @@ vim.opt.listchars = {
 }
 
 vim.opt.list = true
+vim.opt.ignorecase = true

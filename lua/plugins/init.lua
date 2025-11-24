@@ -2,9 +2,34 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     opts = function(_, opts)
-      -- opts contains NvChad's default config
-      -- Merge your custom config
+      -- Overloading NvChad default config
+
       opts.current_line_blame = true
+
+      return opts
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- Overloading NvChad default config
+
+      opts.ensure_installed = {
+        "vim",
+        "lua",
+
+        "rust",
+        "typescript",
+        "javascript",
+        "tsx",
+        "json",
+        "html",
+        "css",
+        "python",
+        "go",
+        "markdown",
+      }
 
       return opts
     end,
@@ -154,14 +179,16 @@ return {
 
   {
     "HiPhish/rainbow-delimiters.nvim",
-    lazy = false,
+    event = "BufReadPre",
     config = function()
-      require("rainbow-delimiters.setup").setup {
+      local rainbow_delimiters = require("rainbow-delimiters")
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+        },
         query = {
-          [""] = "rainbow-parens",
-          javascript = "rainbow-parens",
-          tsx = "rainbow-parens",
-          typescript = "rainbow-parens",
+          [""] = "rainbow-delimiters",
         },
         highlight = {
           "RainbowDelimiterBlue",
