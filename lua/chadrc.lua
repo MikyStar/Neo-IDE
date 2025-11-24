@@ -70,6 +70,8 @@ M.ui = {
   tabufline = {
     show_numbers = true,
   },
+
+  telescope = { style = "bordered" },
 }
 
 --------------------------------------------------------------------
