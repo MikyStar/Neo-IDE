@@ -1,5 +1,16 @@
 return {
   {
+    "lewis6991/gitsigns.nvim",
+    opts = function(_, opts)
+      -- opts contains NvChad's default config
+      -- Merge your custom config
+      opts.current_line_blame = true
+
+      return opts
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     event = 'BufWritePre', -- format on save
     opts = require "configs.conform",
