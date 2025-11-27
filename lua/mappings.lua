@@ -73,8 +73,8 @@ map("n", "<leader>ln", function() vim.diagnostic.goto_next { float = { border = 
 map("n", "<leader>q", function() vim.diagnostic.setloclist() end, { desc = "Diagnostic setloclist" })
 
 -- Telescope
-map("n", "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", { desc = "Find files" })
-map("n", "<C-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", { desc = "Find files" })
+map("n", "<leader>ff", "<cmd> Telescope find_files follow=true hidden=true <CR>", { desc = "Find files" })
+map("n", "<C-p>", "<cmd> Telescope find_files follow=true hidden=true <CR>", { desc = "Find files" })
 
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last Telescope session" })
