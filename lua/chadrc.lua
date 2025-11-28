@@ -76,27 +76,6 @@ M.ui = {
 
 --------------------------------------------------------------------
 
-M.nvim_tree = {
-  git = {
-    enable = true,
-  },
-
-  filters = {
-    git_ignored = false,
-  },
-
-  renderer = {
-    highlight_git = true,
-    icons = {
-      show = {
-        git = true,
-      },
-    },
-  }
-}
-
---------------------------------------------------------------------
-
 M.mason = {
   ensure_installed = {
     -- lua stuff

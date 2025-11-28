@@ -11,6 +11,11 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = require('configs.nvimtree')
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- Overloading NvChad default config
