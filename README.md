@@ -70,7 +70,6 @@ Already supported languages are _rust, python, lua, C, C++, JS/TS, JSX/TSX, HTML
 
 - `:Lazy`: Open plugin manager
 - `:Mason`: Open LSP manager
-- `:Glow`: Markdown preview
 - `:Outline`: Show code outline
 - ...
 

@@ -47,7 +47,7 @@ map("n", "<leader>ww", "<cmd> lua require('nvim-window').pick()<CR>", { desc = "
 -- Gitsigns
 map("n", "<leader>gn", "<cmd> Gitsigns next_hunk <CR>", { desc = "Next git hunk" })
 map("n", "<leader>gp", "<cmd> Gitsigns prev_hunk <CR>", { desc = "Previous git hunk" })
-map("n", "<leader>gr", "<cmd> Gitsigns reset_hunk <CR>", { desc = "Reset git hunk" })
+map("n", "<leader>gR", "<cmd> Gitsigns reset_hunk <CR>", { desc = "Reset git hunk" })
 map("n", "<leader>gb", "<cmd> Gitsigns blame_line <CR>", { desc = "Blame git hunk" })
 
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })

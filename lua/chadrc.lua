@@ -46,8 +46,8 @@ M.nvdash = {
   },
 
   buttons = {
-    { txt = "󰈚  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
     { txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
+    { txt = "󰈚  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
     { txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep" },
     { txt = "  Git", keys = "gg", cmd = "LazyGit" },
     { txt = "  Bookmarks", keys = "ma", cmd = "Telescope marks" },

@@ -63,9 +63,54 @@ return {
   },
 
   {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow"
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons'
+    },
+    lazy = false,
+    config = function()
+      vim.api.nvim_set_hl(0, "MdBlue", { fg = "#61AFEF", bg = "#152430" })
+      vim.api.nvim_set_hl(0, "MdCyan", { fg = "#56B6C2", bg = "#142b2e" })
+      vim.api.nvim_set_hl(0, "MdViolet", { fg = "#C678DD", bg = "#332038" })
+      vim.api.nvim_set_hl(0, "MdYellow", { fg = "#ffdc5e", bg = "#362e14" })
+      vim.api.nvim_set_hl(0, "MdRed", { fg = "#e47093", bg = "#30171f" })
+
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
+      local settings = {
+
+
+        heading = {
+          border = true,
+          -- From https://www.nerdfonts.com/cheat-sheet
+          icons = {
+            "󰼏 ",
+            "󰼐 ",
+            "󰼑 ",
+            "󰼒 ",
+            "󰼓 ",
+            "󰼔 ",
+          },
+          backgrounds = {
+            "MdBlue",
+            "MdCyan",
+            "MdViolet",
+            "MdYellow",
+            "MdRed",
+          },
+          foregrounds = {
+            "MdBlue",
+            "MdCyan",
+            "MdViolet",
+            "MdYellow",
+            "MdRed",
+          }
+        }
+      }
+
+      require('render-markdown').setup(settings)
+    end,
   },
 
   {
@@ -83,7 +128,6 @@ return {
   {
     "roobert/tailwindcss-colorizer-cmp.nvim",
     lazy = false,
-    -- optionally, override the default options:
     config = function()
       require("tailwindcss-colorizer-cmp").setup {
         color_square_width = 2,
@@ -165,6 +209,8 @@ return {
         "RainbowCyan",
         "RainbowBlue",
         "RainbowViolet",
+        "RainbowYellow",
+        "RainbowRed",
       }
 
       local hooks = require "ibl.hooks"
@@ -174,6 +220,8 @@ return {
         vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
         vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
         vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#ffdc5e" })
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#e47093" })
       end)
 
       require("ibl").setup { indent = { highlight = highlight } }
