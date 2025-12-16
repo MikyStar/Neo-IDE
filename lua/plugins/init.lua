@@ -327,4 +327,18 @@ return {
       require "configs.dap".setup()
     end,
   },
+
+  {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      highlight = {
+        pattern = [[<(KEYWORDS)>]],
+      },
+      search = {
+        pattern = [[\b(KEYWORDS)\b]],
+      }
+    },
+  },
 }

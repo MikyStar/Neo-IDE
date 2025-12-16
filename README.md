@@ -71,6 +71,7 @@ Already supported languages are _rust, python, lua, C, C++, JS/TS, JSX/TSX, HTML
 - `:Lazy`: Open plugin manager
 - `:Mason`: Open LSP manager
 - `:Outline`: Show code outline
+- `:TODO`: List every TODO, FIX, WARNING ...
 - ...
 
 #### User defined

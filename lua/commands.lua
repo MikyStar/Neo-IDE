@@ -26,3 +26,6 @@ command("CloseOtherBuffers", function()
   end
 end, {})
 
+command("TODO", function()
+  vim.cmd(":TodoTelescope") -- From folke/todo-comments
+end, {})
