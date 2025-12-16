@@ -160,3 +160,11 @@ _Here are only listed a few important ones, for more see lua/mappings.lua_
 <div align="center">
   <i>Debugger</i>
 </div>
+
+---
+
+![markdown](./assets/markdown.png)
+
+<div align="center">
+  <i>Markdown</i>
+</div>
