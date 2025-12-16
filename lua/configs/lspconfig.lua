@@ -18,7 +18,8 @@ local servers = {
   "pyright",
   "rust_analyzer",
   "js-debug-adapter",
-  "codelldb"
+  "codelldb",
+  "marksman" -- md
 }
 
 ----------------------------------------

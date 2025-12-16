@@ -109,6 +109,7 @@ M.mason = {
     "codelldb",
 
     "editorconfig-checker",
+    "marksman", -- md
   },
 }
 

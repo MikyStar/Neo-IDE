@@ -79,8 +79,6 @@ return {
       ---@module 'render-markdown'
       ---@type render.md.UserConfig
       local settings = {
-
-
         heading = {
           border = true,
           -- From https://www.nerdfonts.com/cheat-sheet
@@ -127,7 +125,7 @@ return {
 
   {
     "roobert/tailwindcss-colorizer-cmp.nvim",
-    lazy = false,
+    lazy = true,
     config = function()
       require("tailwindcss-colorizer-cmp").setup {
         color_square_width = 2,
