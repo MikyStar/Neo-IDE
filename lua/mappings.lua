@@ -17,7 +17,7 @@ map("n", "<leader>sh", "<cmd> split <CR>", { desc = "Split horizontal" })
 
 map("n", "<Esc>", "<cmd> noh <CR>", { desc = "Clear highlights" })
 
-map("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
+map("n", "<C-s>", "<cmd> bufdo w <CR>", { desc = "Save all buffers" })
 
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 

@@ -189,6 +189,7 @@ return {
     },
     keys = {
       { "<leader>sn", function() Snacks.picker.notifications() end,   desc = "Notification History" },
+      { "<leader>sN", function() Snacks.notifier.hide() end,          desc = "Hide notifications" },
       { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command history" },
       { "<leader>sd", function() Snacks.picker.diagnostics() end,     desc = "Diagnostics" },
       { "<leader>su", function() Snacks.picker.undo() end,            desc = "Undo history" },
