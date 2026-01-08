@@ -38,6 +38,28 @@ lspconfig.eslint.setup({
   capabilities = capabilities,
 })
 
+lspconfig.tailwindcss.setup({
+  filetypes = {
+    'html',
+    'css',
+    'scss',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+  },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          -- Match cx('classes'), cx("classes"), cx(`classes`)
+          { "cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+        },
+      },
+    },
+  },
+})
+
 ----------------------------------------
 
 vim.lsp.enable(servers)

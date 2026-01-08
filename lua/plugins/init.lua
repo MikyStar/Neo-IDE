@@ -131,6 +131,9 @@ return {
         color_square_width = 2,
       }
       require("cmp").setup {
+        sources = {
+          { name = 'nvim_lsp' },
+        },
         formatting = { format = require("tailwindcss-colorizer-cmp").formatter },
       }
     end,
