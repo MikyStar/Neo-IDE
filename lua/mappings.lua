@@ -79,30 +79,98 @@ map("n", "<C-p>", "<cmd> Telescope find_files follow=true hidden=true <CR>", { d
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last Telescope session" })
 map("n", "<leader>fg", function()
-  local search_dirs = {}
+  Snacks.input({
+    prompt = "Grep in path(s): ",
+    default = vim.fn.getcwd(),
+    completion = "dir",
+  }, function(paths)
+    if not paths then return end
 
-  local function prompt_for_path()
-    Snacks.input({
-      prompt = string.format("Path %d (empty to finish): ", #search_dirs + 1),
-      default = #search_dirs == 0 and vim.fn.getcwd() or "",
-      completion = "dir",
-    }, function(path)
-      if not path or path == "" then
-        if #search_dirs > 0 then
-          require('telescope.builtin').live_grep({
-            search_dirs = search_dirs
-          })
+    local search_dirs = {}
+
+    -- DON'T split by comma if we have braces - handle the whole thing as one path
+    -- Only split by comma if commas are OUTSIDE of braces
+    local path_list = {}
+
+    -- Check if there are braces
+    if paths:match("{.*}") then
+      -- Has braces, treat as single path
+      table.insert(path_list, paths)
+    else
+      -- No braces, can split by comma for multiple paths
+      for path in string.gmatch(paths, "[^,]+") do
+        table.insert(path_list, path)
+      end
+    end
+
+    for _, path in ipairs(path_list) do
+      path = vim.trim(path)
+      if path ~= "" then
+        -- Expand tilde
+        path = path:gsub("^~", vim.env.HOME)
+
+        vim.notify("Processing: " .. path, vim.log.levels.INFO)
+
+        -- Check if path contains braces
+        local brace_content = path:match("{([^}]+)}")
+
+        if brace_content then
+          -- Extract base path (everything before the braces, removing **)
+          local base_path = path:match("^(.-)/[*{]")
+          base_path = base_path:gsub("/%*+$", ""):gsub("%*+", "")
+
+          vim.notify("Base: " .. base_path .. " | Braces: " .. brace_content, vim.log.levels.INFO)
+
+          -- NOW split the brace content by comma
+          for dir_name in string.gmatch(brace_content, "[^,]+") do
+            dir_name = vim.trim(dir_name)
+
+            local cmd = string.format('find "%s" -type d -name "%s" 2>/dev/null', base_path, dir_name)
+            vim.notify("Running: " .. cmd, vim.log.levels.INFO)
+
+            local handle = io.popen(cmd)
+            if handle then
+              for line in handle:lines() do
+                line = vim.trim(line)
+                if line ~= "" then
+                  vim.notify("Found: " .. line, vim.log.levels.INFO)
+                  table.insert(search_dirs, line)
+                end
+              end
+              handle:close()
+            end
+          end
+        else
+          if vim.fn.isdirectory(path) == 1 then
+            table.insert(search_dirs, path)
+          end
         end
-        return
+      end
+    end
+
+    if #search_dirs == 0 then
+      vim.notify("No valid directories found", vim.log.levels.ERROR)
+      return
+    end
+
+    vim.notify("Found " .. #search_dirs .. " directories", vim.log.levels.INFO)
+
+    Snacks.input({
+      prompt = "File pattern (e.g. *.lua, **/*.ts): ",
+      default = "",
+    }, function(pattern)
+      local opts = {
+        search_dirs = search_dirs
+      }
+
+      if pattern and pattern ~= "" then
+        opts.glob_pattern = pattern
       end
 
-      table.insert(search_dirs, vim.fn.expand(path))
-      prompt_for_path() -- Ask for another path
+      require('telescope.builtin').live_grep(opts)
     end)
-  end
-
-  prompt_for_path()
-end, { desc = "Grep within specified paths" })
+  end)
+end, { desc = "Grep within specified paths and regex" })
 
 map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "Find buffers" })
 map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
