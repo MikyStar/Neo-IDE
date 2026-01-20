@@ -78,6 +78,31 @@ map("n", "<C-p>", "<cmd> Telescope find_files follow=true hidden=true <CR>", { d
 
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last Telescope session" })
+map("n", "<leader>fg", function()
+  local search_dirs = {}
+
+  local function prompt_for_path()
+    Snacks.input({
+      prompt = string.format("Path %d (empty to finish): ", #search_dirs + 1),
+      default = #search_dirs == 0 and vim.fn.getcwd() or "",
+      completion = "dir",
+    }, function(path)
+      if not path or path == "" then
+        if #search_dirs > 0 then
+          require('telescope.builtin').live_grep({
+            search_dirs = search_dirs
+          })
+        end
+        return
+      end
+
+      table.insert(search_dirs, vim.fn.expand(path))
+      prompt_for_path() -- Ask for another path
+    end)
+  end
+
+  prompt_for_path()
+end, { desc = "Grep within specified paths" })
 
 map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "Find buffers" })
 map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
