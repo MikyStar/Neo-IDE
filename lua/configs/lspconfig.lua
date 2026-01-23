@@ -52,8 +52,10 @@ lspconfig.tailwindcss.setup({
     tailwindCSS = {
       experimental = {
         classRegex = {
-          -- Match cx('classes'), cx("classes"), cx(`classes`)
+          -- Match cx('classes') and cx("classes")
           { "cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+          -- Also match cx`classes` (template literals)
+          "cx`([^`]*)`",
         },
       },
     },
