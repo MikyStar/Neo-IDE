@@ -43,12 +43,14 @@ map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Mov
 
 -- Nvim-window
 map("n", "<leader>ww", "<cmd> lua require('nvim-window').pick()<CR>", { desc = "Pick window" })
+map("t", "<leader>ww", "<cmd> lua require('nvim-window').pick()<CR>", { desc = "Pick window" })
 
 -- Gitsigns
 map("n", "<leader>gn", "<cmd> Gitsigns next_hunk <CR>", { desc = "Next git hunk" })
 map("n", "<leader>gp", "<cmd> Gitsigns prev_hunk <CR>", { desc = "Previous git hunk" })
 map("n", "<leader>gR", "<cmd> Gitsigns reset_hunk <CR>", { desc = "Reset git hunk" })
 map("n", "<leader>gb", "<cmd> Gitsigns blame_line <CR>", { desc = "Blame git hunk" })
+map("n", "<leader>gD", "<cmd> Gitsigns preview_hunk_inline <CR>", { desc = "Git diff inline" })
 
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
@@ -199,6 +201,17 @@ map("v", "<C-z>", "")
 map("v", "<S-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 map("v", "<S-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
+--------------------------------------------------------------------
+----------------------- Terminal mode
+
+-- Quick escape from terminal insert mode
+map('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+-- Navigate splits directly from terminal mode (no need to switch to normal first)
+map('t', '<C-h>', '<C-\\><C-n><C-w>h')
+map('t', '<C-j>', '<C-\\><C-n><C-w>j')
+map('t', '<C-k>', '<C-\\><C-n><C-w>k')
+map('t', '<C-l>', '<C-\\><C-n><C-w>l')
 --------------------------------------------------------------------
 ----------------------- Other mode
 
